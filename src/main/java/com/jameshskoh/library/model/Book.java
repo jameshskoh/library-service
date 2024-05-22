@@ -1,8 +1,14 @@
 package com.jameshskoh.library.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@NoArgsConstructor
+@Getter
+@Setter
 public class Book {
 
   @Id
@@ -13,34 +19,8 @@ public class Book {
 
   @ManyToOne private Borrower borrower;
 
-  public Book() {}
-
   // constructor for creating a new Book
   public Book(Isbn isbn) {
     this.isbn = isbn;
-  }
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public Isbn getIsbn() {
-    return isbn;
-  }
-
-  public void setIsbn(Isbn isbn) {
-    this.isbn = isbn;
-  }
-
-  public Borrower getBorrower() {
-    return borrower;
-  }
-
-  public void setBorrower(Borrower borrower) {
-    this.borrower = borrower;
   }
 }

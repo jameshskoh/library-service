@@ -1,23 +1,20 @@
 package com.jameshskoh.library.dto.book;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
+@NoArgsConstructor
+@Getter
+@Setter
 public class ReturnResponseDTO {
 
   private String returnDateTime;
 
-  public ReturnResponseDTO() {}
-
   public ReturnResponseDTO(ZonedDateTime dateTime) {
     returnDateTime = dateTime.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
-  }
-
-  public String getReturnDateTime() {
-    return returnDateTime;
-  }
-
-  public void setReturnDateTime(String returnDateTime) {
-    this.returnDateTime = returnDateTime;
   }
 }
