@@ -20,25 +20,25 @@
 ## Requirements
 
 * [ ] Implement REST APIs to support
-  * [ ] Registering a new borrower to the library
-  * [ ] Registering a new book to the library
-  * [ ] Getting a list of all books in the library
-  * [ ] User actions
-    * [ ] Borrowing a book
-    * [ ] Returning a borrowed book
+  * [x] Registering a new borrower to the library
+  * [x] Registering a new book to the library
+  * [x] Getting a list of all books in the library
+  * [x] User actions
+    * [x] Borrowing a book
+    * [x] Returning a borrowed book
 
 
 
 ## Other requirements
 
-* [ ] Uses Java 17 and Spring Boot
-* [ ] Uses a package manager
-* [ ] Has data validation
-* [ ] Has error handling
+* [x] Uses Java 17 and Spring Boot
+* [x] Uses a package manager
 * [ ] Uses a database to store borrower and book data
   * [ ] Justification of using Postgres
 * [ ] Multiple books with the same ISBN number should be registered as books with different IDs
 * [ ] No more than one member is borrowing the same book at a time
+* [ ] Has data validation
+* [ ] Has error handling
 * [ ] Clear documentation
 
 

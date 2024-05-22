@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("borrow")
 public class BorrowController {
 
-  @PostMapping
+  @PostMapping("borrow")
   public BorrowInfo borrowBook() {
     // #TODO implement this
     return new BorrowInfo();
   }
 
-  @PostMapping
+  @PostMapping("return")
   public ReturnInfo returnBook() {
     // #TODO implement this
     return new ReturnInfo();
