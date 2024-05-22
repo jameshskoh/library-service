@@ -1,11 +1,11 @@
 package com.jameshskoh.library.controller;
 
-import com.jameshskoh.library.dto.BorrowRequestDTO;
-import com.jameshskoh.library.dto.BorrowResponseDTO;
-import com.jameshskoh.library.dto.ReturnRequestDTO;
-import com.jameshskoh.library.dto.ReturnResponseDTO;
+import com.jameshskoh.library.dto.book.BorrowRequestDTO;
+import com.jameshskoh.library.dto.book.BorrowResponseDTO;
+import com.jameshskoh.library.dto.book.CreateRequestDTO;
+import com.jameshskoh.library.dto.book.ReturnRequestDTO;
+import com.jameshskoh.library.dto.book.ReturnResponseDTO;
 import com.jameshskoh.library.model.Book;
-import com.jameshskoh.library.model.IsbnCode;
 import com.jameshskoh.library.service.BookService;
 import java.util.List;
 import org.springframework.web.bind.annotation.*;
@@ -31,8 +31,8 @@ public class BookController {
   }
 
   @PostMapping("create")
-  public Book createBook(@RequestBody IsbnCode isbnCode) {
-    return bookService.createBook(isbnCode);
+  public Book createBook(@RequestBody CreateRequestDTO createRequestDTO) {
+    return bookService.createBook(createRequestDTO);
   }
 
   @PostMapping("borrow")

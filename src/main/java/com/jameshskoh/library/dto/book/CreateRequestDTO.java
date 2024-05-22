@@ -1,7 +1,7 @@
-package com.jameshskoh.library.model;
+package com.jameshskoh.library.dto.book;
 
 // #TODO consider renaming this
-public class IsbnCode {
+public class CreateRequestDTO {
 
   private String isbn;
 

@@ -1,4 +1,4 @@
-package com.jameshskoh.library.dto;
+package com.jameshskoh.library.dto.book;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
