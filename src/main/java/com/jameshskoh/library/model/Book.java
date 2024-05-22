@@ -11,7 +11,14 @@ public class Book {
 
   @ManyToOne private Isbn isbn;
 
-  @ManyToOne private Borrower borrowedBy;
+  @ManyToOne private Borrower borrower;
+
+  public Book() {}
+
+  // constructor for creating a new Book
+  public Book(Isbn isbn) {
+    this.isbn = isbn;
+  }
 
   public Long getId() {
     return id;
@@ -29,11 +36,11 @@ public class Book {
     this.isbn = isbn;
   }
 
-  public Borrower getBorrowedBy() {
-    return borrowedBy;
+  public Borrower getBorrower() {
+    return borrower;
   }
 
-  public void setBorrowedBy(Borrower borrowedBy) {
-    this.borrowedBy = borrowedBy;
+  public void setBorrower(Borrower borrower) {
+    this.borrower = borrower;
   }
 }
