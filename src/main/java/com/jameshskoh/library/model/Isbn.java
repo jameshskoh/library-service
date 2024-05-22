@@ -5,9 +5,7 @@ import jakarta.persistence.*;
 @Entity
 public class Isbn {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private String id;
+  @Id private String id;
 
   private String title;
   private String author;
