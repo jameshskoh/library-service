@@ -33,8 +33,7 @@
 
 * [x] Uses Java 17 and Spring Boot
 * [x] Uses a package manager
-* [ ] Uses a database to store borrower and book data
-  * [ ] Justification of using Postgres
+* [x] Uses a database to store borrower and book data
 * [ ] Multiple books with the same ISBN number should be registered as books with different IDs
 * [ ] No more than one member is borrowing the same book at a time
 * [ ] Has data validation
@@ -45,7 +44,7 @@
 
 ### Assumptions?
 
-* 
+* Justification of using Postgres
 
 
 
