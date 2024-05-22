@@ -2,9 +2,12 @@ package com.jameshskoh.library.service;
 
 import com.jameshskoh.library.model.Isbn;
 import com.jameshskoh.library.repository.IsbnRepository;
+import jakarta.persistence.EntityExistsException;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.stereotype.Service;
 
+// #TODO test this
 @Service
 public class IsbnService {
 
@@ -15,7 +18,12 @@ public class IsbnService {
   }
 
   public Isbn createIsbn(Isbn isbn) {
-    // #TODO should throw error when isbn already exists
+    Optional<Isbn> existingIsbnOpt = isbnRepository.findById(isbn.getId());
+
+    if (existingIsbnOpt.isPresent()) {
+      throw new EntityExistsException("ISBN already exists! ID: %s".formatted(isbn.getId()));
+    }
+
     return isbnRepository.save(isbn);
   }
 

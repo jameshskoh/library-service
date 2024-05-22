@@ -5,16 +5,19 @@ import com.jameshskoh.library.dto.book.BorrowResponseDTO;
 import com.jameshskoh.library.dto.book.CreateRequestDTO;
 import com.jameshskoh.library.dto.book.ReturnRequestDTO;
 import com.jameshskoh.library.dto.book.ReturnResponseDTO;
+import com.jameshskoh.library.exception.UnexpectedRequestException;
 import com.jameshskoh.library.model.Book;
 import com.jameshskoh.library.model.Borrower;
 import com.jameshskoh.library.model.Isbn;
 import com.jameshskoh.library.repository.BookRepository;
 import com.jameshskoh.library.repository.BorrowerRepository;
 import com.jameshskoh.library.repository.IsbnRepository;
+import jakarta.persistence.EntityNotFoundException;
 import java.time.ZonedDateTime;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
+// #TODO test this
 @Service
 public class BookService {
 
@@ -33,12 +36,12 @@ public class BookService {
 
   // #TODO project and remove borrower field?
   public Book createBook(CreateRequestDTO createRequestDTO) {
-    // #TODO think what to throw here
     Isbn isbn =
         isbnRepository
             .findById(createRequestDTO.getIsbn())
             .orElseThrow(
-                () -> new IllegalArgumentException("ISBN not found: %s".formatted(createRequestDTO)));
+                () ->
+                    new EntityNotFoundException("ISBN: %s".formatted(createRequestDTO.getIsbn())));
 
     Book newBook = new Book(isbn);
 
@@ -55,21 +58,21 @@ public class BookService {
 
   public BorrowResponseDTO borrowBook(BorrowRequestDTO borrowRequestDTO) {
     long borrowerId = borrowRequestDTO.getBorrowerId();
-
-    // #TODO think what to throw here
     Borrower borrower =
         borrowerRepository
             .findById(borrowerId)
-            .orElseThrow(() -> new RuntimeException("Invalid borrower!"));
+            .orElseThrow(
+                () -> new EntityNotFoundException("Invalid borrower ID: %d".formatted(borrowerId)));
 
     long bookId = borrowRequestDTO.getBookId();
-
-    // #TODO think what to throw here
     Book requestedBook =
-        bookRepository.findById(bookId).orElseThrow(() -> new RuntimeException("Book not found!"));
+        bookRepository
+            .findById(bookId)
+            .orElseThrow(
+                () -> new EntityNotFoundException("Invalid book ID: %d".formatted(bookId)));
 
     if (requestedBook.getBorrower() != null) {
-      throw new RuntimeException("Book is being borrowed.");
+      throw new UnexpectedRequestException("Book is already borrowed! ID: %d".formatted(bookId));
     }
 
     requestedBook.setBorrower(borrower);
@@ -80,15 +83,14 @@ public class BookService {
 
   public ReturnResponseDTO returnBook(ReturnRequestDTO returnRequestDTO) {
     long bookId = returnRequestDTO.getBookId();
-
-    // #TODO think what to throw
     Book bookToReturn =
         bookRepository
             .findById(bookId)
-            .orElseThrow(() -> new RuntimeException("Invalid borrower!"));
+            .orElseThrow(
+                () -> new EntityNotFoundException("Invalid book ID: %d".formatted(bookId)));
 
     if (bookToReturn.getBorrower() == null) {
-      throw new RuntimeException("Book is already returned!");
+      throw new UnexpectedRequestException("Book is already returned! ID: %d".formatted(bookId));
     }
 
     bookToReturn.setBorrower(null);
