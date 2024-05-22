@@ -18,7 +18,8 @@ public class BookController {
   }
 
   @PostMapping("create")
-  public void createBook() {
+  public Book createBook() {
     // #TODO implement this
+    return new Book();
   }
 }
