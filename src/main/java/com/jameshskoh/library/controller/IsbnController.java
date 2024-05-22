@@ -17,9 +17,6 @@ public class IsbnController {
 
   @PostMapping("create")
   public Isbn createIsbn(@RequestBody Isbn isbn) {
-    System.out.println(
-        "ISBN received: %s %s %s".formatted(isbn.getId(), isbn.getTitle(), isbn.getAuthor()));
-
     return isbnService.createIsbn(isbn);
   }
 
