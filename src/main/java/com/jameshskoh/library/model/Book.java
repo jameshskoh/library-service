@@ -1,12 +1,8 @@
 package com.jameshskoh.library.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
 public class Book {
 
   @Id
@@ -15,5 +11,29 @@ public class Book {
 
   @ManyToOne private Isbn isbn;
 
-  @ManyToOne private User borrowedBy;
+  @ManyToOne private Borrower borrowedBy;
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public Isbn getIsbn() {
+    return isbn;
+  }
+
+  public void setIsbn(Isbn isbn) {
+    this.isbn = isbn;
+  }
+
+  public Borrower getBorrowedBy() {
+    return borrowedBy;
+  }
+
+  public void setBorrowedBy(Borrower borrowedBy) {
+    this.borrowedBy = borrowedBy;
+  }
 }

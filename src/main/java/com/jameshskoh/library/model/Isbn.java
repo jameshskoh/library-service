@@ -1,14 +1,8 @@
 package com.jameshskoh.library.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.util.Set;
 
 @Entity
-@Getter
-@Setter
 public class Isbn {
 
   @Id
@@ -18,5 +12,27 @@ public class Isbn {
   private String title;
   private String author;
 
-  @OneToMany private Set<Book> books;
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public String getAuthor() {
+    return author;
+  }
+
+  public void setAuthor(String author) {
+    this.author = author;
+  }
 }
