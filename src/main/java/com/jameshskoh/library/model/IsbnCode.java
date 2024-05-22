@@ -1,5 +1,6 @@
 package com.jameshskoh.library.model;
 
+// #TODO consider renaming this
 public class IsbnCode {
 
   private String isbn;
