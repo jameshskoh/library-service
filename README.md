@@ -1,5 +1,17 @@
 # library-service
 
+## Setup guide
+
+### Database setup
+
+* Replace the following values in `/src/main/resources/application.properties`
+  * `spring.datasource.url`
+  * `spring.datasource.username`
+  * `spring.datasource.password`
+* You may also consider using a profile, e.g. `local` and inject the properties above in `application-local.properties` instead
+
+
+
 ## APIs
 
 * `/borrowers`
