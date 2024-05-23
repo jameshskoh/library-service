@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("borrower")
+@RequestMapping("borrowers")
 public class BorrowerController {
 
   private final BorrowerService borrowerService;

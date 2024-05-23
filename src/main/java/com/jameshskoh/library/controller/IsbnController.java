@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("isbn")
+@RequestMapping("isbns")
 public class IsbnController {
 
   private final IsbnService isbnService;
