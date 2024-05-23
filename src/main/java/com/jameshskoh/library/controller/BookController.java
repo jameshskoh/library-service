@@ -38,12 +38,12 @@ public class BookController {
   }
 
   @PostMapping("borrow")
-  public BorrowResponseDTO borrowBook(BorrowRequestDTO borrowRequestDTO) {
+  public BorrowResponseDTO borrowBook(@RequestBody BorrowRequestDTO borrowRequestDTO) {
     return bookService.borrowBook(borrowRequestDTO);
   }
 
   @PostMapping("return")
-  public ReturnResponseDTO returnBook(ReturnRequestDTO returnRequestDTO) {
+  public ReturnResponseDTO returnBook(@RequestBody ReturnRequestDTO returnRequestDTO) {
     return bookService.returnBook(returnRequestDTO);
   }
 }

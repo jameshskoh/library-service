@@ -1,3 +1,5 @@
+package com.jameshskoh.library;
+
 import com.jameshskoh.library.exception.UnexpectedRequestException;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
