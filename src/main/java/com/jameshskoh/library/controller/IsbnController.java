@@ -3,6 +3,7 @@ package com.jameshskoh.library.controller;
 import com.jameshskoh.library.model.Isbn;
 import com.jameshskoh.library.service.IsbnService;
 import java.util.List;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,6 +17,7 @@ public class IsbnController {
   }
 
   @PostMapping("create")
+  @ResponseStatus(HttpStatus.CREATED)
   public Isbn createIsbn(@RequestBody Isbn isbn) {
     return isbnService.createIsbn(isbn);
   }

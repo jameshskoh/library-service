@@ -13,7 +13,6 @@ import com.jameshskoh.library.repository.BookRepository;
 import com.jameshskoh.library.repository.BorrowerRepository;
 import com.jameshskoh.library.repository.IsbnRepository;
 import jakarta.persistence.EntityNotFoundException;
-import java.time.ZonedDateTime;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -25,16 +24,19 @@ public class BookService {
   private final BookRepository bookRepository;
   private final BorrowerRepository borrowerRepository;
 
+  private final DateTimeService dateTimeService;
+
   public BookService(
       IsbnRepository isbnRepository,
       BookRepository bookRepository,
-      BorrowerRepository borrowerRepository) {
+      BorrowerRepository borrowerRepository,
+      DateTimeService dateTimeService) {
     this.isbnRepository = isbnRepository;
     this.bookRepository = bookRepository;
     this.borrowerRepository = borrowerRepository;
+    this.dateTimeService = dateTimeService;
   }
 
-  // #TODO project and remove borrower field?
   public Book createBook(CreateRequestDTO createRequestDTO) {
     Isbn isbn =
         isbnRepository
@@ -78,7 +80,7 @@ public class BookService {
     requestedBook.setBorrower(borrower);
     bookRepository.save(requestedBook);
 
-    return new BorrowResponseDTO(ZonedDateTime.now());
+    return new BorrowResponseDTO(dateTimeService.getDateTime());
   }
 
   public ReturnResponseDTO returnBook(ReturnRequestDTO returnRequestDTO) {
@@ -96,6 +98,6 @@ public class BookService {
     bookToReturn.setBorrower(null);
     bookRepository.save(bookToReturn);
 
-    return new ReturnResponseDTO(ZonedDateTime.now());
+    return new ReturnResponseDTO(dateTimeService.getDateTime());
   }
 }

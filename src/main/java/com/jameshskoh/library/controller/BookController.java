@@ -8,6 +8,7 @@ import com.jameshskoh.library.dto.book.ReturnResponseDTO;
 import com.jameshskoh.library.model.Book;
 import com.jameshskoh.library.service.BookService;
 import java.util.List;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -31,6 +32,7 @@ public class BookController {
   }
 
   @PostMapping("create")
+  @ResponseStatus(HttpStatus.CREATED)
   public Book createBook(@RequestBody CreateRequestDTO createRequestDTO) {
     return bookService.createBook(createRequestDTO);
   }

@@ -4,7 +4,6 @@ import com.jameshskoh.library.model.Borrower;
 import com.jameshskoh.library.repository.BorrowerRepository;
 import org.springframework.stereotype.Service;
 
-// #TODO test this
 @Service
 public class BorrowerService {
 
